@@ -4,246 +4,769 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>株式会社Cozy | 医療従事者のための、新しい福利厚生</title>
-<meta name="description" content="株式会社Cozyは、看護師をはじめとする医療従事者向けの報酬型福利厚生プラットフォームを開発するスタートアップです。">
+<meta name="description" content="株式会社Cozyは、報酬型福利厚生™の仕組みを通じて、医療従事者の経済的地位を向上させます。">
+<meta property="og:title" content="株式会社Cozy | 医療従事者のための、新しい福利厚生">
+<meta property="og:description" content="医療の現場に、新しい価値を。看護師をはじめとする医療従事者に、これまでにない福利厚生の仕組みを届ける。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.be-cozy.jp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cozy-green: #18E983;
-  --cozy-green-dark: #12C46D;
-  --cozy-green-light: #E8FFF3;
-  --cozy-green-glow: rgba(24, 233, 131, 0.15);
-  --text-primary: #1A1A2E;
-  --text-secondary: #4A4A6A;
-  --text-light: #8888A0;
-  --bg-primary: #FAFBFD;
+  --primary: #F06449;
+  --primary-light: #F8A08E;
+  --primary-dark: #C44835;
+  --bg-main: #EBE7E2;
+  --bg-emphasis: #D5D0C8;
   --bg-white: #FFFFFF;
-  --border-light: #E8EBF0;
+  --text-primary: #2D2A26;
+  --text-secondary: #6B6560;
+  --text-tertiary: #9A9590;
+  --accent-teal: #2A8C82;
+  --border-light: #E8E4E0;
+  --border-default: #D5D0C8;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Noto Sans JP', 'DM Sans', sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.8; -webkit-font-smoothing: antialiased; }
 
-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-light); transition: box-shadow 0.3s; }
-header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
-.header-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
-.logo-link { display: flex; align-items: center; text-decoration: none; }
-.logo-img { height: 36px; width: auto; }
-nav a { font-size: 14px; font-weight: 500; color: var(--text-secondary); text-decoration: none; margin-left: 28px; transition: color 0.2s; }
-nav a:hover { color: var(--cozy-green-dark); }
-.nav-contact { background: var(--cozy-green); color: #fff !important; padding: 10px 24px; border-radius: 8px; transition: background 0.2s, transform 0.2s; }
-.nav-contact:hover { background: var(--cozy-green-dark); transform: translateY(-1px); }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 
-.hero { padding: 160px 24px 100px; text-align: center; position: relative; overflow: hidden; background: linear-gradient(180deg, #F0FFF7 0%, var(--bg-primary) 100%); }
-.hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, var(--cozy-green-glow) 0%, transparent 70%); pointer-events: none; }
-.hero::after { content: ''; position: absolute; bottom: -150px; left: -150px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(24,233,131,0.08) 0%, transparent 70%); pointer-events: none; }
-.hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 900; line-height: 1.4; margin-bottom: 24px; animation: fadeInUp 0.8s ease-out; }
-.hero h1 .accent { background: linear-gradient(135deg, var(--cozy-green), var(--cozy-green-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero-sub { font-size: 18px; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; line-height: 1.9; animation: fadeInUp 0.8s ease-out 0.15s both; }
-.hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--cozy-green); color: #fff; font-size: 16px; font-weight: 700; padding: 16px 36px; border-radius: 12px; text-decoration: none; transition: all 0.3s; animation: fadeInUp 0.8s ease-out 0.3s both; box-shadow: 0 4px 20px rgba(24,233,131,0.3); }
-.hero-cta:hover { background: var(--cozy-green-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(24,233,131,0.4); }
+body {
+  font-family: 'Noto Sans JP', 'DM Sans', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-section { padding: 100px 24px; }
-.section-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-.section-label { font-size: 13px; font-weight: 700; color: var(--cozy-green-dark); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-.section-title { font-size: clamp(26px, 4vw, 38px); font-weight: 900; line-height: 1.4; margin-bottom: 24px; }
+/* ═══════ HEADER ═══════ */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  background: rgba(235, 231, 226, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition: all 0.3s ease;
+}
 
+header.scrolled {
+  background: rgba(235, 231, 226, 0.95);
+  box-shadow: 0 1px 0 var(--border-light), 0 4px 16px rgba(45,42,38,0.04);
+}
+
+.logo a { display: flex; align-items: center; text-decoration: none; }
+.logo svg { height: 28px; width: auto; }
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+nav a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.02em;
+}
+
+nav a:hover { color: var(--text-primary); }
+
+nav .cta-btn {
+  padding: 0.55rem 1.4rem;
+  background: var(--primary);
+  color: var(--bg-white);
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+}
+
+nav .cta-btn:hover {
+  background: var(--primary-dark);
+  color: var(--bg-white);
+  transform: translateY(-1px);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--text-primary);
+  border-radius: 1px;
+  transition: all 0.3s;
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(45,42,38,0.35);
+  z-index: 998;
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; right: 0;
+  width: min(300px, 80vw);
+  height: 100dvh;
+  background: var(--bg-main);
+  z-index: 999;
+  padding: 5rem 2rem 2rem;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav.open { transform: translateX(0); }
+
+.mobile-nav a {
+  display: block;
+  padding: 0.9rem 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.mobile-nav .mobile-cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background: var(--primary);
+  color: var(--bg-white);
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+/* ═══════ HERO ═══════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px clamp(1.5rem, 5vw, 4rem) 80px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-main);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -15%; right: -10%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(240,100,73,0.06) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -10%; left: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(248,160,142,0.06) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--primary);
+}
+
+.hero p {
+  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+  color: var(--text-secondary);
+  line-height: 2;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.5rem;
+  background: var(--primary);
+  color: var(--bg-white);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.hero-cta:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(240,100,73,0.25);
+}
+
+/* ═══════ SECTIONS 共通 ═══════ */
+section { padding: 100px clamp(1.5rem, 5vw, 4rem); }
+.container { max-width: 960px; margin: 0 auto; }
+.centered { text-align: center; }
+
+.sec-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.6rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.sec-title {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+/* ═══════ VISION & MISSION ═══════ */
 #vision { background: var(--bg-white); }
-.vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; max-width: 900px; margin-left: auto; margin-right: auto; }
-.vm-card { background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: 20px; padding: 44px 36px; transition: all 0.3s; position: relative; overflow: hidden; text-align: left; }
-.vm-card:hover { border-color: var(--cozy-green); box-shadow: 0 8px 32px rgba(24,233,131,0.08); }
-.vm-label { font-size: 12px; font-weight: 700; color: var(--cozy-green-dark); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-.vm-card h3 { font-size: 22px; font-weight: 900; line-height: 1.5; margin-bottom: 16px; }
-.vm-card p { font-size: 15px; color: var(--text-secondary); line-height: 1.9; }
-.vm-accent { position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; border-radius: 50%; background: var(--cozy-green-glow); pointer-events: none; }
 
-#about { background: linear-gradient(135deg, var(--text-primary) 0%, #2A2A4E 100%); color: #fff; }
-#about .section-inner { text-align: center; }
-#about .section-label { color: var(--cozy-green); }
-#about .section-title { color: #fff; }
-.about-text { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 2; max-width: 720px; margin: 0 auto 48px; }
-.about-keywords { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-.keyword { background: rgba(24,233,131,0.12); border: 1px solid rgba(24,233,131,0.25); color: var(--cozy-green); font-size: 14px; font-weight: 500; padding: 10px 22px; border-radius: 100px; }
+.vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
 
+.vm-card {
+  padding: 2.2rem;
+  border-radius: 16px;
+  background: var(--bg-main);
+  border: 1px solid var(--border-light);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.vm-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(45,42,38,0.05);
+}
+
+.card-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.vm-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.55;
+  margin-bottom: 0.8rem;
+}
+
+.vm-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+
+/* ═══════ ABOUT ═══════ */
+#about { background: var(--bg-main); }
+
+.about-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 2;
+  text-align: center;
+  max-width: 680px;
+  margin: 2rem auto 2.5rem;
+}
+
+.tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.2s;
+}
+
+.tag:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* ═══════ PRODUCT ═══════ */
 #product { background: var(--bg-white); }
-.coming-soon-box { background: var(--bg-primary); border: 2px dashed var(--border-light); border-radius: 20px; padding: 64px 48px; text-align: center; max-width: 640px; margin: 0 auto; }
-.coming-soon-box .cs-icon { font-size: 48px; margin-bottom: 20px; }
-.coming-soon-box h3 { font-size: 24px; font-weight: 900; margin-bottom: 16px; }
-.coming-soon-box p { font-size: 15px; color: var(--text-secondary); line-height: 1.9; margin-bottom: 8px; }
-.coming-soon-label { display: inline-block; background: var(--cozy-green-light); color: var(--cozy-green-dark); font-size: 13px; font-weight: 700; padding: 6px 18px; border-radius: 100px; margin-top: 20px; letter-spacing: 1px; }
 
-.company-table { width: 100%; max-width: 700px; border-collapse: collapse; margin: 0 auto; }
-.company-table th, .company-table td { padding: 18px 20px; text-align: left; font-size: 15px; border-bottom: 1px solid var(--border-light); }
-.company-table th { font-weight: 700; color: var(--text-primary); width: 160px; white-space: nowrap; vertical-align: top; }
-.company-table td { color: var(--text-secondary); }
+.product-card {
+  max-width: 580px;
+  margin: 2.5rem auto 0;
+  background: var(--bg-main);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+}
 
+.product-card .emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+
+.product-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin-bottom: 0.5rem;
+}
+
+.coming-soon {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  background: rgba(240,100,73,0.08);
+  color: var(--primary);
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ═══════ COMPANY ═══════ */
+#company { background: var(--bg-main); }
+
+.company-table {
+  max-width: 680px;
+  margin: 2.5rem auto 0;
+  background: var(--bg-white);
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+}
+
+.company-row {
+  display: flex;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.company-row:last-child { border-bottom: none; }
+
+.company-row dt {
+  width: 140px;
+  flex-shrink: 0;
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: rgba(235,231,226,0.3);
+}
+
+.company-row dd {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ═══════ CONTACT ═══════ */
 #contact { background: var(--bg-white); }
-.contact-box { background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: 20px; padding: 48px; max-width: 640px; margin: 0 auto; text-align: center; }
-.contact-box h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
-.contact-box > p { font-size: 15px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.8; }
-.contact-form { text-align: left; }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text-primary); }
-.form-group label .req { color: #E74C3C; margin-left: 4px; font-size: 12px; }
-.form-group input, .form-group textarea { width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: 10px; font-size: 15px; font-family: inherit; transition: border-color 0.3s; background: #fff; }
-.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--cozy-green); box-shadow: 0 0 0 3px rgba(24,233,131,0.1); }
+
+.contact-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 1.5rem auto 0;
+  max-width: 540px;
+  line-height: 1.9;
+}
+
+.contact-form {
+  max-width: 560px;
+  margin: 2.5rem auto 0;
+  background: var(--bg-main);
+  border-radius: 16px;
+  padding: 2.5rem;
+  border: 1px solid var(--border-light);
+}
+
+.form-group { margin-bottom: 1.3rem; }
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+}
+
+.form-group label .req {
+  color: var(--primary);
+  font-size: 0.72rem;
+  margin-left: 0.3rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--border-default);
+  border-radius: 8px;
+  background: var(--bg-white);
+  font-size: 0.9rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(240,100,73,0.08);
+}
+
 .form-group textarea { min-height: 120px; resize: vertical; }
-.form-submit { display: inline-flex; align-items: center; justify-content: center; width: 100%; background: var(--cozy-green); color: #fff; font-size: 16px; font-weight: 700; padding: 16px 36px; border-radius: 12px; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 20px rgba(24,233,131,0.3); }
-.form-submit:hover { background: var(--cozy-green-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(24,233,131,0.4); }
-.contact-note { margin-top: 16px; font-size: 13px; color: var(--text-light); text-align: center; }
 
-footer { background: var(--text-primary); color: rgba(255,255,255,0.5); padding: 40px 24px; text-align: center; font-size: 13px; }
-.footer-logo { height: 28px; width: auto; margin-bottom: 12px; filter: brightness(0) invert(1); }
-.footer-tm { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 8px; }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text-tertiary); }
 
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 0.85rem;
+  margin-top: 0.5rem;
+  background: var(--primary);
+  color: var(--bg-white);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
 
-@media (max-width: 768px) { .header-inner { height: 60px; } .logo-img { height: 28px; } nav { display: none; } .hero { padding: 120px 20px 80px; } section { padding: 72px 20px; } .vm-grid { grid-template-columns: 1fr; } .contact-box { padding: 32px 24px; } .coming-soon-box { padding: 40px 24px; } .company-table th { width: 120px; } }
-.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--text-primary); margin: 5px 0; transition: 0.3s; }
-@media (max-width: 768px) { .hamburger { display: block; } nav { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--bg-white); border-bottom: 1px solid var(--border-light); padding: 20px 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); } nav.open { display: flex; flex-direction: column; gap: 16px; } nav a { margin-left: 0; font-size: 16px; } .nav-contact { text-align: center; } }
+.submit-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.form-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  margin-top: 1rem;
+}
+
+/* ═══════ FOOTER ═══════ */
+footer {
+  background: var(--bg-emphasis);
+  padding: 2rem clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+  border-top: 1px solid var(--border-light);
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  line-height: 1.8;
+}
+
+/* ═══════ ANIMATIONS ═══════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media (max-width: 768px) {
+  nav { display: none; }
+  .hamburger { display: flex; }
+  .mobile-nav { display: flex; }
+  section { padding: 70px 1.5rem; }
+  .hero { min-height: auto; padding: 110px 1.5rem 60px; }
+  .vm-grid { grid-template-columns: 1fr; }
+  .company-row { flex-direction: column; }
+  .company-row dt { width: 100%; padding: 0.8rem 1.2rem 0.3rem; background: transparent; }
+  .company-row dd { padding: 0.3rem 1.2rem 0.8rem; }
+  .contact-form { padding: 1.5rem; }
+  .tags { gap: 0.5rem; }
+}
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header id="header">
-  <div class="header-inner">
-    <a href="#" class="logo-link"><img src="logo.png" alt="Cozy" class="logo-img"></a>
-    <nav id="nav">
-      <a href="#vision">Vision &amp; Mission</a>
-      <a href="#about">About Us</a>
-      <a href="#product">Product</a>
-      <a href="#company">会社概要</a>
-      <a href="#contact" class="nav-contact">お問い合わせ</a>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  <div class="logo">
+    <a href="#">
+      <svg height="28" viewBox="0 0 108 36" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="30" font-family="'DM Sans', sans-serif" font-weight="800" font-size="34" fill="#F06449">Cozy</text>
+      </svg>
+    </a>
   </div>
+  <nav id="nav">
+    <a href="#vision">Vision &amp; Mission</a>
+    <a href="#about">About Us</a>
+    <a href="#product">Product</a>
+    <a href="#company">会社概要</a>
+    <a href="#contact" class="cta-btn">お問い合わせ</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
+<div class="mobile-overlay" id="overlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#vision" class="mn-link">Vision &amp; Mission</a>
+  <a href="#about" class="mn-link">About Us</a>
+  <a href="#product" class="mn-link">Product</a>
+  <a href="#company" class="mn-link">会社概要</a>
+  <a href="#contact" class="mobile-cta mn-link">お問い合わせ</a>
+</div>
+
+<!-- HERO -->
 <section class="hero">
-  <h1>医療の現場に、<br><span class="accent">新しい価値</span>を。</h1>
-  <p class="hero-sub">看護師をはじめとする医療従事者に、<br>これまでにない福利厚生の仕組みを届ける。<br>株式会社Cozyは、医療×テクノロジーで<br>エッセンシャルワーカーの未来を変えていきます。</p>
-  <a href="#contact" class="hero-cta">お問い合わせ →</a>
+  <div class="hero-inner">
+    <h1>医療の現場に、<br><em>新しい価値</em>を。</h1>
+    <p>看護師をはじめとする医療従事者に、<br>これまでにない福利厚生の仕組みを届ける。<br>株式会社Cozyは、医療×テクノロジーで<br>エッセンシャルワーカーの未来を変えていきます。</p>
+    <a href="#contact" class="hero-cta">お問い合わせ →</a>
+  </div>
 </section>
 
+<!-- VISION & MISSION -->
 <section id="vision">
-  <div class="section-inner">
-    <div class="section-label reveal">Vision &amp; Mission</div>
-    <h2 class="section-title reveal">私たちが目指す未来</h2>
+  <div class="container centered">
+    <span class="sec-label reveal">Vision &amp; Mission</span>
+    <h2 class="sec-title reveal">私たちが目指す未来</h2>
     <div class="vm-grid">
       <div class="vm-card reveal">
-        <div class="vm-label">Mission</div>
-        <h3>エッセンシャルワーカーの<br>経済的地位を高める</h3>
+        <div class="card-label">Mission</div>
+        <h3>エッセンシャルワーカーの経済的地位を高める</h3>
         <p>看護師をはじめ、私たちの生活を支えるエッセンシャルワーカー。その貢献に見合った報酬を、既存の予算を削るのではなく、まったく新しい仕組みで実現します。それがCozyの「報酬型福利厚生™」です。</p>
-        <div class="vm-accent"></div>
       </div>
       <div class="vm-card reveal">
-        <div class="vm-label">Vision</div>
-        <h3>エッセンシャルワーカーが<br>より報われる社会</h3>
+        <div class="card-label">Vision</div>
+        <h3>エッセンシャルワーカーがより報われる社会</h3>
         <p>社会に不可欠な仕事に就く人たちが、経済的にも精神的にも豊かに生きられる社会。Cozyはテクノロジーの力で、まず医療の現場からその実現を目指します。</p>
-        <div class="vm-accent"></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ABOUT US -->
 <section id="about">
-  <div class="section-inner">
-    <div class="section-label reveal">About Us</div>
-    <h2 class="section-title reveal">Cozyについて</h2>
+  <div class="container centered">
+    <span class="sec-label reveal">About Us</span>
+    <h2 class="sec-title reveal">Cozyについて</h2>
     <p class="about-text reveal">株式会社Cozyは、看護師・医療従事者向けの「報酬型福利厚生™」プラットフォームを開発するスタートアップです。医療機関に新たな価値を提供しながら、そこで働く人たちの経済的な課題を解決することを目指しています。AI・テクノロジーを最大限に活用した少数精鋭の組織で、日本の医療業界に新しい風を吹き込みます。</p>
-    <div class="about-keywords reveal">
-      <span class="keyword">報酬型福利厚生™</span>
-      <span class="keyword">看護師・医療従事者向け</span>
-      <span class="keyword">医療 × テクノロジー</span>
-      <span class="keyword">AI駆動開発</span>
-      <span class="keyword">特許・商標出願中</span>
+    <div class="tags reveal">
+      <span class="tag">報酬型福利厚生™</span>
+      <span class="tag">看護師・医療従事者向け</span>
+      <span class="tag">医療 × テクノロジー</span>
+      <span class="tag">AI駆動開発</span>
+      <span class="tag">特許・商標出願中</span>
     </div>
   </div>
 </section>
 
+<!-- PRODUCT -->
 <section id="product">
-  <div class="section-inner">
-    <div class="section-label reveal">Product</div>
-    <h2 class="section-title reveal">プロダクト</h2>
-    <div class="coming-soon-box reveal">
-      <div class="cs-icon">🚀</div>
+  <div class="container centered">
+    <span class="sec-label reveal">Product</span>
+    <h2 class="sec-title reveal">プロダクト</h2>
+    <div class="product-card reveal">
+      <div class="emoji">🚀</div>
       <h3>現在開発中</h3>
-      <p>医療従事者向けの報酬型福利厚生™プラットフォームを<br>鋭意開発しております。</p>
-      <p>PoC（実証実験）にご関心のある<br>医療機関様は、お気軽にお問い合わせください。</p>
-      <div class="coming-soon-label">Coming Soon</div>
+      <p>医療従事者向けの報酬型福利厚生™プラットフォームを鋭意開発しております。</p>
+      <p>PoC（実証実験）にご関心のある医療機関様は、お気軽にお問い合わせください。</p>
+      <span class="coming-soon">Coming Soon</span>
     </div>
   </div>
 </section>
 
+<!-- COMPANY -->
 <section id="company">
-  <div class="section-inner">
-    <div class="section-label reveal">Company</div>
-    <h2 class="section-title reveal">会社概要</h2>
-    <table class="company-table reveal">
-      <tr><th>社名</th><td>株式会社Cozy</td></tr>
-      <tr><th>所在地</th><td>〒150-0021<br>東京都渋谷区恵比寿西2丁目4番8号<br>ウイング恵比寿ビル8F</td></tr>
-      <tr><th>代表者</th><td>代表取締役社長　奥村 慶太</td></tr>
-      <tr><th>設立</th><td>2026年2月25日</td></tr>
-      <tr><th>事業内容</th><td>医療・介護をはじめとするエッセンシャルワーカーの定着・確保を目的とした報酬型福利厚生™プラットフォーム（ビジネスモデル特許申請中）の開発・運営、AI技術を活用した医療環境最適化ソリューションの研究開発、およびデジタルコンテンツ配信サービスの提供</td></tr>
-    </table>
+  <div class="container centered">
+    <span class="sec-label reveal">Company</span>
+    <h2 class="sec-title reveal">会社概要</h2>
+    <dl class="company-table reveal">
+      <div class="company-row">
+        <dt>社名</dt>
+        <dd>株式会社Cozy</dd>
+      </div>
+      <div class="company-row">
+        <dt>所在地</dt>
+        <dd>〒150-0021<br>東京都渋谷区恵比寿西2丁目4番8号<br>ウイング恵比寿ビル8F</dd>
+      </div>
+      <div class="company-row">
+        <dt>代表者</dt>
+        <dd>代表取締役社長　奥村 慶太</dd>
+      </div>
+      <div class="company-row">
+        <dt>設立</dt>
+        <dd>2026年2月25日</dd>
+      </div>
+      <div class="company-row">
+        <dt>事業内容</dt>
+        <dd>医療・介護をはじめとするエッセンシャルワーカーの定着・確保を目的とした報酬型福利厚生™プラットフォーム（ビジネスモデル特許申請中）の開発・運営、AI技術を活用した医療環境最適化ソリューションの研究開発、およびデジタルコンテンツ配信サービスの提供</dd>
+      </div>
+    </dl>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
-  <div class="section-inner">
-    <div class="section-label reveal">Contact</div>
-    <h2 class="section-title reveal">お問い合わせ</h2>
-    <div class="contact-box reveal">
-      <p>PoC（実証実験）へのご参加、事業提携、<br>採用、取材など、お気軽にお問い合わせください。</p>
-      <form class="contact-form" action="https://ssgform.com/s/cq5fpATmgJ4e" method="post">
-        <div class="form-group">
-          <label>企業・団体名<span class="req">*必須</span></label>
-          <input type="text" name="企業・団体名" required placeholder="例：〇〇クリニック">
-        </div>
-        <div class="form-group">
-          <label>お名前<span class="req">*必須</span></label>
-          <input type="text" name="お名前" required placeholder="例：山田 太郎">
-        </div>
-        <div class="form-group">
-          <label>メールアドレス<span class="req">*必須</span></label>
-          <input type="email" name="メールアドレス" required placeholder="例：yamada@example.com">
-        </div>
-        <div class="form-group">
-          <label>役職</label>
-          <input type="text" name="役職" placeholder="例：院長">
-        </div>
-        <div class="form-group">
-          <label>お問い合わせ内容<span class="req">*必須</span></label>
-          <textarea name="お問い合わせ内容" required placeholder="お問い合わせ内容をご記入ください"></textarea>
-        </div>
-        <button type="submit" class="form-submit">送信する</button>
-      </form>
-      <p class="contact-note">※ 通常3営業日以内にご返信いたします</p>
-    </div>
+  <div class="container centered">
+    <span class="sec-label reveal">Contact</span>
+    <h2 class="sec-title reveal">お問い合わせ</h2>
+    <p class="contact-desc reveal">PoC（実証実験）へのご参加、事業提携、採用、取材など、お気軽にお問い合わせください。</p>
+    <form class="contact-form reveal" action="https://ssgform.com/s/cq5fpATmgJ4e" method="post">
+      <div class="form-group">
+        <label>企業・団体名<span class="req">*必須</span></label>
+        <input type="text" name="企業・団体名" required placeholder="例：〇〇クリニック">
+      </div>
+      <div class="form-group">
+        <label>お名前<span class="req">*必須</span></label>
+        <input type="text" name="お名前" required placeholder="例：山田 太郎">
+      </div>
+      <div class="form-group">
+        <label>メールアドレス<span class="req">*必須</span></label>
+        <input type="email" name="メールアドレス" required placeholder="例：yamada@example.com">
+      </div>
+      <div class="form-group">
+        <label>役職</label>
+        <input type="text" name="役職" placeholder="例：院長">
+      </div>
+      <div class="form-group">
+        <label>お問い合わせ内容<span class="req">*必須</span></label>
+        <textarea name="お問い合わせ内容" required placeholder="お問い合わせ内容をご記入ください"></textarea>
+      </div>
+      <button type="submit" class="submit-btn">送信する</button>
+    </form>
+    <p class="form-note reveal">※ 通常3営業日以内にご返信いたします</p>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <img src="logo.png" alt="Cozy" class="footer-logo">
   <p>© 2026 株式会社Cozy. All rights reserved.</p>
-  <p class="footer-tm">「報酬型福利厚生」は株式会社Cozyの商標出願中の名称です。</p>
+  <p>「報酬型福利厚生」は株式会社Cozyの商標出願中の名称です。</p>
 </footer>
 
 <script>
 const header = document.getElementById('header');
-window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 10); });
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 10);
+});
+
 const hamburger = document.getElementById('hamburger');
-const nav = document.getElementById('nav');
-hamburger.addEventListener('click', () => { nav.classList.toggle('open'); });
-nav.querySelectorAll('a').forEach(a => { a.addEventListener('click', () => nav.classList.remove('open')); });
+const mobileNav = document.getElementById('mobileNav');
+const overlay = document.getElementById('overlay');
+
+function toggleMenu() {
+  const open = mobileNav.classList.contains('open');
+  if (open) {
+    mobileNav.classList.remove('open');
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+  } else {
+    mobileNav.classList.add('open');
+    overlay.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+hamburger.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
+document.querySelectorAll('.mn-link').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+  });
+});
+
 const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.15 });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
 reveals.forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
