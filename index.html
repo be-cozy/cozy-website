@@ -56,28 +56,40 @@ a:hover { text-decoration-thickness: 3px; }
 .domain { font-family: var(--mono); font-weight: 400; letter-spacing: 0; }
 
 /* ---------- ヒーロー ---------- */
+/* 社名と問いかけ、その下（広い画面では右）に、形にした2つのサイトの画面を置く */
 .hero {
-  min-height: 100svh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  padding-top: clamp(20px, 4vw, 40px);
-  padding-bottom: clamp(48px, 8vw, 96px);
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 72px);
+  align-items: center;
+  padding-top: clamp(36px, 6vw, 72px);
+  padding-bottom: clamp(56px, 8vw, 104px);
 }
-.hero-name { font-size: clamp(2.6rem, 14vw, 11rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+@media (min-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); min-height: min(100svh, 860px); }
+}
+.hero-name { font-size: clamp(2.3rem, 5.6vw, 4.6rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
 .hero-q {
-  align-self: end;
-  font-size: clamp(1.6rem, 4.4vw, 3.9rem);
+  margin-top: clamp(24px, 3.4vw, 44px);
+  font-size: clamp(1.45rem, 2.7vw, 2.35rem);
   font-weight: 700;
-  line-height: 1.32;
-  letter-spacing: -0.01em;
-  max-width: 15em;
+  line-height: 1.5;
 }
 .hero-q span { display: inline-block; }
-.hero-a {
-  margin-top: clamp(20px, 3vw, 36px);
-  font-size: clamp(1.05rem, 2vw, 1.5rem);
-  font-weight: 500;
+.hero-a { margin-top: 14px; font-size: clamp(1rem, 1.4vw, 1.15rem); }
+
+.made { display: flex; justify-content: center; align-items: flex-start; gap: 0; }
+.made a { display: block; width: min(47%, 300px); text-decoration: none; color: inherit; }
+.made a + a { margin-left: -3%; margin-top: 14%; }
+.phone {
+  display: block;
+  padding: 7px;
+  background: var(--ink);
+  border-radius: clamp(22px, 4vw, 34px);
 }
+.phone img { width: 100%; aspect-ratio: 390 / 664; object-fit: cover; object-position: top; border-radius: clamp(16px, 3vw, 27px); background: #fff; }
+.made .domain { display: block; margin-top: 10px; font-size: 13px; text-align: center; text-decoration: underline; text-underline-offset: 0.3em; }
+.made a:hover .domain { text-decoration-thickness: 3px; }
 
 /* ---------- 展示の共通 ---------- */
 .exhibit-title { font-size: clamp(1.9rem, 4.4vw, 3.4rem); font-weight: 700; line-height: 1.25; letter-spacing: 0; }
@@ -252,9 +264,22 @@ a:hover { text-decoration-thickness: 3px; }
 <main>
 
 <section class="hero wrap" aria-labelledby="hero-name">
-  <h1 class="hero-name" id="hero-name">株式会社Cozy</h1>
-  <p class="hero-q"><span>ネットで</span><span>ものや情報に</span><span>出会う方法は、</span><span>まだ</span><span>あるんじゃないか。</span></p>
-  <p class="hero-a">そう考えて、形にしています。</p>
+  <div>
+    <h1 class="hero-name" id="hero-name">株式会社Cozy</h1>
+    <p class="hero-q"><span>ネットで</span><span>ものや情報に</span><span>出会う方法は、</span><span>まだ</span><span>あるんじゃないか。</span></p>
+    <p class="hero-a">そう考えて、形にしています。</p>
+  </div>
+  <!-- 画面は tools/capture-hero.cjs で撮る。2026-11-10 撮影 -->
+  <div class="made">
+    <a href="https://kodomokutsu.com">
+      <span class="phone"><img src="assets/hero/kodomokutsu.jpg" alt="スマホで開いた子供くつNaviのトップ画面" width="900" height="1532"></span>
+      <span class="domain">kodomokutsu.com</span>
+    </a>
+    <a href="https://diggy.jp">
+      <span class="phone"><img src="assets/hero/diggy.jpg" alt="スマホで開いたDIGGYのトップ画面" width="900" height="1532"></span>
+      <span class="domain">diggy.jp</span>
+    </a>
+  </div>
 </section>
 
 <section class="kutsu" aria-labelledby="kutsu-title">
