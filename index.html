@@ -27,8 +27,6 @@
   --k-yellow: #FFE34A;
   --k-ink: #18191B;
   --k-paper: #FFFDF7;
-  --k-coral: #FF886B;
-  --k-skin: #F4CFAE;
 
   --gutter: clamp(16px, 5vw, 72px);
   --measure: 34em;
@@ -122,93 +120,14 @@ a:hover { text-decoration-thickness: 3px; }
 .cast .toko { height: clamp(130px, 22vw, 210px); }
 .cast .mili { height: clamp(96px, 15vw, 150px); }
 
-.measure {
-  position: relative;
+/* 表示サイズがどれも 16.0 なのに長さが違う中敷き。kodomokutsu.com の絵をそのまま使う */
+.insoles {
   background: var(--k-paper);
   border: 2px solid var(--k-ink);
   box-shadow: 6px 6px 0 var(--k-ink);
-  padding: 22px clamp(16px, 3vw, 32px) 18px;
+  overflow: hidden;
 }
-.measure-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-.measure-head label { font-size: 14px; font-weight: 700; }
-.measure-value { font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; font-size: clamp(1.6rem, 3.6vw, 2.4rem); line-height: 1; white-space: nowrap; }
-.measure-value small { font-family: var(--mono); font-size: 0.45em; margin-left: 0.2em; }
-
-.bench { position: relative; margin-top: 18px; --len: 145; }
-.foot-area { position: relative; aspect-ratio: 100 / 44; }
-.foot {
-  position: absolute; left: 0; bottom: 4px;
-  width: calc(var(--len) / 200 * 100%);
-  height: auto;
-  overflow: visible;
-}
-.toe-line {
-  position: absolute; top: 0; bottom: -51px;
-  left: calc(var(--len) / 200 * 100%);
-  width: 2px; margin-left: -1px;
-  background: var(--k-coral);
-}
-.ruler {
-  position: relative;
-  height: 38px;
-  border-top: 2px solid var(--k-ink);
-  background:
-    linear-gradient(to right, var(--k-ink) 1.5px, transparent 1.5px) 0 0 / 5% 18px repeat-x,
-    linear-gradient(to right, var(--k-ink) 1px, transparent 1px) 0 0 / 2.5% 12px repeat-x,
-    linear-gradient(to right, var(--k-ink) 1px, transparent 1px) 0 0 / 0.5% 7px repeat-x;
-}
-.ruler::after { content: ""; position: absolute; right: 0; top: 0; width: 1.5px; height: 18px; background: var(--k-ink); }
-@media (max-width: 520px) {
-  .ruler {
-    background:
-      linear-gradient(to right, var(--k-ink) 1.5px, transparent 1.5px) 0 0 / 5% 16px repeat-x,
-      linear-gradient(to right, var(--k-ink) 1px, transparent 1px) 0 0 / 2.5% 9px repeat-x;
-  }
-}
-.ruler-num {
-  position: absolute; top: 18px;
-  left: calc(var(--n) / 20 * 100%);
-  transform: translateX(-50%);
-  font-family: var(--mono); font-size: 12px; line-height: 1.6;
-}
-.ruler-num:first-child { transform: none; }
-.ruler-num:last-of-type { transform: translateX(-100%); }
-
-/* つま先の印。10〜20cm の範囲を動かす。つまみの幅の半分だけ左右に広げて、印と目盛りを合わせる */
-.toe {
-  position: absolute;
-  bottom: 0;
-  left: calc(50% - 13px);
-  width: calc(50% + 26px);
-  height: 64px;
-  margin: 0;
-  background: transparent;
-  -webkit-appearance: none; appearance: none;
-  cursor: ew-resize;
-  touch-action: pan-y;
-}
-.toe::-webkit-slider-runnable-track { height: 64px; background: transparent; }
-.toe::-moz-range-track { height: 64px; background: transparent; }
-.toe::-webkit-slider-thumb {
-  -webkit-appearance: none; appearance: none;
-  width: 26px; height: 26px; margin-top: 38px;
-  border-radius: 50%;
-  background: var(--k-coral);
-  border: 2px solid var(--k-ink);
-  box-shadow: 2px 2px 0 var(--k-ink);
-}
-.toe::-moz-range-thumb {
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: var(--k-coral);
-  border: 2px solid var(--k-ink);
-  box-shadow: 2px 2px 0 var(--k-ink);
-  transform: translateY(19px);
-}
-.toe:focus-visible { outline: none; }
-.toe:focus-visible::-webkit-slider-thumb { outline: 3px solid var(--k-ink); outline-offset: 3px; }
-.toe:focus-visible::-moz-range-thumb { outline: 3px solid var(--k-ink); outline-offset: 3px; }
-.bench-gap { height: 26px; }
+.insoles img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 
 /* ---------- DIGGY ---------- */
 .diggy { background: #FFFFFF; padding: clamp(56px, 9vw, 120px) 0 clamp(40px, 6vw, 72px); border-bottom: 1px solid var(--rule); }
@@ -218,8 +137,11 @@ a:hover { text-decoration-thickness: 3px; }
 }
 .diggy .exhibit-title { font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif; letter-spacing: 0.02em; }
 
+/* 服は真横に近い向きで、古着屋のラックのように詰めて掛ける */
 .rack {
-  --gw: clamp(176px, 19vw, 260px);
+  --gw: clamp(200px, 22vw, 300px);
+  --step: max(32px, var(--gw) * 0.13);
+  --part: calc(var(--gw) * 0.24);
   margin-top: clamp(32px, 5vw, 64px);
   overflow-x: auto;
   overflow-y: hidden;
@@ -234,7 +156,7 @@ a:hover { text-decoration-thickness: 3px; }
   position: relative;
   display: flex;
   width: max-content;
-  padding: 18px var(--gutter) 8px;
+  padding: 18px var(--gutter) 8px max(0px, calc(var(--gutter) - var(--gw) * 0.3));
 }
 /* 掛け棒。DIGGY の吊り写真はフックの頂点が画像の高さの 6% にあるので、その少し下を通す */
 .rack-track::before {
@@ -251,24 +173,31 @@ a:hover { text-decoration-thickness: 3px; }
   position: relative;
   flex: 0 0 auto;
   width: var(--gw);
-  margin-right: calc(var(--gw) * -0.42);
+  margin-right: calc(var(--step) - var(--gw));
   transform-origin: 50% 8%;
-  transition: transform 0.32s cubic-bezier(.2,.7,.2,1);
+  transition: transform 0.36s cubic-bezier(.2,.7,.2,1);
   -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .garment:last-child { margin-right: 0; }
+/* 写真は重なり合うので、触れて反応するのは服の真ん中の細い帯だけにする */
+.garment { pointer-events: none; }
+.garment::after {
+  content: "";
+  position: absolute;
+  top: 8%; bottom: 20%;
+  left: calc(50% - var(--step) / 2);
+  width: var(--step);
+  pointer-events: auto;
+}
+.garment.is-out::after { left: 28%; width: 44%; }
 /* 写真の下 1 割はどの服でも空いているので切る */
 .garment img { width: 100%; aspect-ratio: 3 / 3.6; object-fit: cover; object-position: 50% 0; pointer-events: none; -webkit-user-drag: none; user-select: none; }
-.garment:focus-visible { outline-offset: -6px; z-index: 3; }
-/* 触れた一着が前に出て、周りがよける */
-@media (hover: hover) {
-  .garment:hover { transform: translateY(-2.5%) scale(1.06); z-index: 3; }
-  .garment:hover ~ .garment { transform: translateX(34px); }
-  .garment:has(~ .garment:hover) { transform: translateX(-34px); }
-}
-.garment:focus-visible { transform: translateY(-2.5%) scale(1.06); }
-.garment:focus-visible ~ .garment { transform: translateX(34px); }
-.garment:has(~ .garment:focus-visible) { transform: translateX(-34px); }
+.garment:focus-visible { outline-offset: -10px; }
+/* 取り出した一着は前に出て正面を向き、両隣がよける */
+.garment.is-out { z-index: 5; transform: translateY(-1.5%) scale(1.05); }
+.garment.is-out ~ .garment { transform: translateX(var(--part)); }
+.garment:has(~ .garment.is-out) { transform: translateX(calc(var(--part) * -1)); }
 
 /* ---------- 報酬型福利厚生® ---------- */
 .dormant {
@@ -311,9 +240,6 @@ a:hover { text-decoration-thickness: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
-  .garment, .garment:hover, .garment:focus-visible,
-  .garment:hover ~ .garment, .garment:focus-visible ~ .garment,
-  .garment:has(~ .garment:hover), .garment:has(~ .garment:focus-visible) { transform: none; }
 }
 </style>
 </head>
@@ -335,8 +261,8 @@ a:hover { text-decoration-thickness: 3px; }
       <p>子供靴は、表記サイズが同じでもブランドやモデルによって中の長さが違います。ネットでは試着ができません。親が指でつま先を押して確かめる方法も、実のところ当てになりません。足の長さと幅さえ分かれば、その子に合うサイズは判定できます。そのためのサイトを作っています。</p>
     </div>
 
+    <!-- 絵はすべて kodomokutsu.com から直接読み込む。向こうで描き直せばここも変わる。読めなければその絵だけ消す -->
     <div class="kutsu-demo">
-      <!-- キャラクターは kodomokutsu.com から直接読み込む。向こうで描き直せばここも変わる。読めなければ消す -->
       <div class="cast" aria-hidden="true">
         <picture>
           <source srcset="https://kodomokutsu.com/assets/img/mili-intro-trim.webp" type="image/webp">
@@ -347,37 +273,9 @@ a:hover { text-decoration-thickness: 3px; }
           <img class="toko" src="https://kodomokutsu.com/assets/img/toko-hero-trim.png" alt="" width="640" height="567" onerror="this.closest('picture').remove()">
         </picture>
       </div>
-
-      <div class="measure">
-        <div class="measure-head">
-          <label for="toe">足の長さ</label>
-          <output class="measure-value" for="toe" id="toe-out">14.5<small>cm</small></output>
-        </div>
-        <div class="bench" id="bench">
-          <div class="foot-area">
-            <svg class="foot" viewBox="0 0 98.7 44" aria-hidden="true">
-              <g fill="var(--k-skin)" stroke="var(--k-ink)" stroke-width="1.6" stroke-linejoin="round">
-                <path vector-effect="non-scaling-stroke" d="M8 23 C3 15 9 8 20 9 C34 10 46 13 60 10 C70 8 79 7 84 10 C89 13 89 33 84 36 C77 40 66 40 56 38 C42 35 30 38 18 38 C10 38 5 31 8 23 Z"/>
-                <ellipse vector-effect="non-scaling-stroke" cx="92.5" cy="12.5" rx="6.2" ry="5.2"/>
-                <ellipse vector-effect="non-scaling-stroke" cx="91.5" cy="21.8" rx="4.2" ry="3.5"/>
-                <ellipse vector-effect="non-scaling-stroke" cx="89.6" cy="28.6" rx="3.7" ry="3.1"/>
-                <ellipse vector-effect="non-scaling-stroke" cx="87" cy="34.2" rx="3.3" ry="2.8"/>
-                <ellipse vector-effect="non-scaling-stroke" cx="83.4" cy="38.8" rx="2.9" ry="2.4"/>
-              </g>
-            </svg>
-            <span class="toe-line" aria-hidden="true"></span>
-          </div>
-          <div class="ruler" aria-hidden="true">
-            <span class="ruler-num" style="--n:0">0</span>
-            <span class="ruler-num" style="--n:5">5</span>
-            <span class="ruler-num" style="--n:10">10</span>
-            <span class="ruler-num" style="--n:15">15</span>
-            <span class="ruler-num" style="--n:20">20</span>
-          </div>
-          <input class="toe" id="toe" type="range" min="100" max="200" step="1" value="145" aria-valuetext="14.5センチ">
-          <div class="bench-gap"></div>
-        </div>
-      </div>
+      <figure class="insoles">
+        <img src="https://kodomokutsu.com/assets/img/cause-insole.webp" alt="表示サイズがどれも16.0の中敷き3枚。並べると長さがそれぞれ違う" width="1200" height="900" onerror="this.closest('figure').remove()">
+      </figure>
     </div>
   </div>
 </section>
@@ -435,31 +333,22 @@ a:hover { text-decoration-thickness: 3px; }
 </footer>
 
 <script>
-// 子供くつNavi：つま先の印を動かすと、足の絵と数字が追いかける
-(() => {
-  const bench = document.getElementById('bench');
-  const toe = document.getElementById('toe');
-  const out = document.getElementById('toe-out');
-  const update = () => {
-    const mm = Number(toe.value);
-    const cm = (mm / 10).toFixed(1);
-    bench.style.setProperty('--len', mm);
-    out.firstChild.nodeValue = cm;
-    toe.setAttribute('aria-valuetext', cm + 'センチ');
-  };
-  toe.addEventListener('input', update);
-  update();
-})();
-
-// DIGGY：店の商品をその場で読み込み、毎回違う並びでラックに掛ける
+// DIGGY：店の商品をその場で読み込み、毎回違う並びで、真横に近い向きのままラックに詰めて掛ける。
+// 触れた一着だけが取り出されて正面を向く。
 (() => {
   const rack = document.getElementById('rack');
   const track = document.getElementById('rack-track');
-  const MAX = 24;
+  const MAX = 28;
+  const SIDE = 8;    // DIGGY の回転写真（36 枚）のうち、ラックに掛けたときの向き
+  const FRONT = 0;   // 正面
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 
-  // 吊り下げ写真（ファイル名が -00）を優先し、無ければ1枚目を使う
-  const hangingImage = (p) => (p.images.find((img) => /-00[._]/.test(img.src)) || p.images[0] || {}).src;
-  const sized = (src, w) => src + (src.includes('?') ? '&' : '?') + 'width=' + w;
+  // 商品写真のファイル名（…-00_xxxx.webp）から回転写真の共通部分を取り出す
+  const framePrefix = (p) => {
+    const img = p.images.find((i) => /-00[._]/.test(i.src));
+    return img ? img.src.split('?')[0].replace(/-00[._][^/]*$/, '') : null;
+  };
+  const frameUrl = (prefix, n) => prefix + '-' + String(n).padStart(2, '0') + '.webp?width=360';
   const shuffle = (list) => {
     for (let i = list.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -467,7 +356,6 @@ a:hover { text-decoration-thickness: 3px; }
     }
     return list;
   };
-
   const load = (src) => new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = 'anonymous';
@@ -495,30 +383,88 @@ a:hover { text-decoration-thickness: 3px; }
     return false;
   };
 
-  const hang = (products) => {
-    const candidates = shuffle(products.filter(hangingImage)).slice(0, MAX + 16);
-    return Promise.allSettled(candidates.map((p) => load(sized(hangingImage(p), 360)).then((img) => ({ p, img }))))
-      .then((results) => {
-        const loaded = results.filter((r) => r.status === 'fulfilled').map((r) => r.value);
-        const hanging = loaded.filter(({ img }) => hasHanger(img));
-        // 撮り方の決まりが変わってフックが見つからないときは、読めた服をそのまま並べる
-        const items = (hanging.length >= 6 ? hanging : loaded).slice(0, MAX);
-        if (!items.length) return;
-        for (const { p, img } of items) {
-          const a = document.createElement('a');
-          a.className = 'garment';
-          a.href = 'https://diggy.jp/products/' + p.handle;
-          a.setAttribute('role', 'listitem');
-          a.draggable = false;
-          img.alt = p.title;
-          img.width = 300;
-          img.height = 400;
-          img.draggable = false;
-          a.append(img);
-          track.append(a);
+  // ---- 一着ごとの回転 ----
+  const items = new Map();
+  let current = null;
+
+  const frame = (item, n) => {
+    if (!item.frames[n]) {
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = frameUrl(item.prefix, n);
+      item.frames[n] = img;
+    }
+    return item.frames[n];
+  };
+  const turnTo = (item, target) => {
+    item.target = target;
+    const step = target < item.at ? -1 : 1;
+    for (let n = item.at; n !== target + step; n += step) frame(item, n);
+    if (reduced.matches) {
+      const done = frame(item, target);
+      const show = () => { if (item.target === target) { item.img.src = done.src; item.at = target; } };
+      done.complete ? show() : done.addEventListener('load', show, { once: true });
+      return;
+    }
+    if (item.spinning) return;
+    item.spinning = true;
+    let last = 0;
+    const tick = (t) => {
+      if (item.at === item.target) { item.spinning = false; return; }
+      if (t - last >= 34) {
+        const dir = item.target < item.at ? -1 : 1;
+        const next = frame(item, item.at + dir);
+        if (next.complete && next.naturalWidth) {
+          item.img.src = next.src;
+          item.at += dir;
+          last = t;
         }
-        rack.hidden = false;
-      });
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const pullOut = (el) => {
+    if (current === el) return;
+    if (current) putBack(current);
+    current = el;
+    el.classList.add('is-out');
+    turnTo(items.get(el), FRONT);
+  };
+  const putBack = (el) => {
+    el.classList.remove('is-out');
+    turnTo(items.get(el), SIDE);
+    if (current === el) current = null;
+  };
+
+  const hang = (products) => {
+    const candidates = shuffle(products.filter(framePrefix)).slice(0, MAX + 24);
+    return Promise.allSettled(candidates.map((p) => {
+      const prefix = framePrefix(p);
+      return load(frameUrl(prefix, SIDE)).then((img) => ({ p, prefix, img }));
+    })).then((results) => {
+      const loaded = results.filter((r) => r.status === 'fulfilled').map((r) => r.value);
+      const hanging = loaded.filter(({ img }) => hasHanger(img));
+      // 撮り方の決まりが変わってフックが見つからないときは、読めた服をそのまま並べる
+      const chosen = (hanging.length >= 6 ? hanging : loaded).slice(0, MAX);
+      if (!chosen.length) return;
+      for (const { p, prefix, img } of chosen) {
+        const a = document.createElement('a');
+        a.className = 'garment';
+        a.href = 'https://diggy.jp/products/' + p.handle;
+        a.setAttribute('role', 'listitem');
+        a.setAttribute('aria-label', p.title);
+        a.draggable = false;
+        img.alt = '';
+        img.width = 300;
+        img.height = 400;
+        img.draggable = false;
+        a.append(img);
+        track.append(a);
+        items.set(a, { prefix, img, frames: { [SIDE]: img }, at: SIDE, target: SIDE, spinning: false });
+      }
+      rack.hidden = false;
+    });
   };
 
   // ラックが画面に近づいてから読み込み始める
@@ -537,9 +483,29 @@ a:hover { text-decoration-thickness: 3px; }
     start();
   }
 
-  // マウスでもラックを横につかんで送れるようにする（指は標準のスクロールに任せる）
-  let startX = 0, startLeft = 0, pressed = false, moved = false;
+  // ---- 触れ方 ----
+  // マウス：乗せた服を取り出し、押すと商品ページへ。
+  // 指：1回目のタップで取り出し、取り出した服をもう一度タップすると商品ページへ。
+  // キーボード：Tab で移った服を取り出し、Enter で商品ページへ。
+  let pressed = false, moved = false, startX = 0, startLeft = 0, lastPointer = 'mouse';
+  const garmentOf = (target) => target.closest && target.closest('.garment');
+
+  track.addEventListener('pointerover', (e) => {
+    if (e.pointerType !== 'mouse' || pressed) return;
+    const g = garmentOf(e.target);
+    if (g) pullOut(g);
+  });
+  rack.addEventListener('pointerleave', (e) => {
+    if (e.pointerType === 'mouse' && current && !pressed) putBack(current);
+  });
+  track.addEventListener('focusin', (e) => { const g = garmentOf(e.target); if (g) pullOut(g); });
+  track.addEventListener('focusout', (e) => {
+    const g = garmentOf(e.target);
+    if (g && !track.contains(e.relatedTarget)) putBack(g);
+  });
+
   rack.addEventListener('pointerdown', (e) => {
+    lastPointer = e.pointerType;
     if (e.pointerType !== 'mouse' || e.button !== 0) return;
     pressed = true; moved = false;
     startX = e.clientX; startLeft = rack.scrollLeft;
@@ -554,10 +520,19 @@ a:hover { text-decoration-thickness: 3px; }
     pressed = false;
     rack.classList.remove('is-dragging');
   });
-  // つかんで動かしたあとの指離しで、商品ページに飛ばない
+
   rack.addEventListener('click', (e) => {
-    if (moved) { e.preventDefault(); moved = false; }
+    // つかんで動かしたあとの指離しで、商品ページに飛ばない
+    if (moved) { e.preventDefault(); moved = false; return; }
+    const g = garmentOf(e.target);
+    if (g && lastPointer !== 'mouse' && current !== g) {
+      e.preventDefault();
+      pullOut(g);
+    }
   }, true);
+  document.addEventListener('click', (e) => {
+    if (current && !rack.contains(e.target)) putBack(current);
+  });
 })();
 </script>
 </body>
