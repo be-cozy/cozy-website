@@ -117,13 +117,14 @@ a:hover { text-decoration-thickness: 3px; }
 .kutsu .exhibit-text p { margin-top: 24px; }
 
 .kutsu-demo { position: relative; }
+/* 中敷きの「+0.5cm」「+1.0cm」は右寄りにあるので、キャラクターは左に立たせる */
 .cast {
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 4%;
-  padding-right: 4%;
-  margin-bottom: -18px;
+  padding-left: 4%;
+  margin-bottom: -10px;
   position: relative;
   z-index: 1;
   pointer-events: none;
@@ -294,12 +295,12 @@ a:hover { text-decoration-thickness: 3px; }
     <div class="kutsu-demo">
       <div class="cast" aria-hidden="true">
         <picture>
-          <source srcset="https://kodomokutsu.com/assets/img/mili-intro-trim.webp" type="image/webp">
-          <img class="mili" src="https://kodomokutsu.com/assets/img/mili-intro-trim.png" alt="" width="239" height="380" onerror="this.closest('picture').remove()">
-        </picture>
-        <picture>
           <source srcset="https://kodomokutsu.com/assets/img/toko-hero-trim.webp" type="image/webp">
           <img class="toko" src="https://kodomokutsu.com/assets/img/toko-hero-trim.png" alt="" width="640" height="567" onerror="this.closest('picture').remove()">
+        </picture>
+        <picture>
+          <source srcset="https://kodomokutsu.com/assets/img/mili-intro-trim.webp" type="image/webp">
+          <img class="mili" src="https://kodomokutsu.com/assets/img/mili-intro-trim.png" alt="" width="239" height="380" onerror="this.closest('picture').remove()">
         </picture>
       </div>
       <!-- 中敷きの図は kodomokutsu.com の絵柄に合わせてここで描く。差は kodomokutsu.com/shape/ の「0.2cm から 1cm ほど違う」の範囲に収める -->
